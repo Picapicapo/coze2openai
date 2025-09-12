@@ -91,7 +91,7 @@ app.post("/v1/chat/completions", async (req, res) => {
 
     const lastMessage = messages[messages.length - 1];
     const queryString = lastMessage.content;
-    const stream = data.stream !== undefined ? data.stream : false;
+    const stream = false;
     let requestBody;
     const bot_id = model && botConfig[model] ? botConfig[model] : default_bot_id;
 
