@@ -91,7 +91,8 @@ app.post("/v1/chat/completions", async (req, res) => {
 
     const lastMessage = messages[messages.length - 1];
     const queryString = lastMessage.content;
-    const stream = false;
+    // const stream = data.stream !== undefined ? data.stream : false;
+    const stream = false；
     let requestBody;
     const bot_id = model && botConfig[model] ? botConfig[model] : default_bot_id;
 
@@ -112,7 +113,7 @@ app.post("/v1/chat/completions", async (req, res) => {
       },
       body: JSON.stringify(requestBody),
     });
-    if (stream) {
+    /* if (stream) {
       res.setHeader("Content-Type", "text/event-stream");
       const stream = resp.body;
       let buffer = "";
@@ -214,7 +215,7 @@ app.post("/v1/chat/completions", async (req, res) => {
 
         buffer = lines[lines.length - 1];
       });
-    } else {
+    } */ else {
       resp
         .json()
         .then((data) => {
