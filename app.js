@@ -40,6 +40,20 @@ app.get("/", (req, res) => {
   `);
 });
 
+app.get('/v1/models', (req, res) => {
+  res.json({
+    object: 'list',
+    data: [
+      {
+        id: 'coze-mike',
+        object: 'model',
+        created: Date.now(),
+        owned_by: 'coze',
+      },
+    ],
+  });
+});
+
 app.post("/v1/chat/completions", async (req, res) => {
   const authHeader =
     req.headers["authorization"] || req.headers["Authorization"];
